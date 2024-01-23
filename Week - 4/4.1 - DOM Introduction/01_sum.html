@@ -1,0 +1,164 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of two numbers</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputBox">
+        <label for="num1">Num1 : </label>
+        <input type="text" id="num1" placeholder="Enter the first number" />
+      </div>
+
+      <div class="inputBox">
+        <label for="num2">Num2 : </label>
+        <input type="text" id="num2" placeholder="Enter the second number" />
+      </div>
+      <button onclick="calculateSum2()">Calculate Sum</button>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function calculateSum() {
+        let num1 = document.querySelector("#num1").value;
+        let num2 = document.querySelector("#num2").value;
+
+        let result = document.querySelector("#result");
+
+        // we need to send the value of num1 and num2 to server in order to calculate the sum.
+
+
+        fetch(`http://127.0.0.1:3000/sum?a=${num1}&b=${num2}`)
+          .then((data) => {
+            data.text().then((res) => {
+              console.log(res);
+              result.innerHTML = `sum is : ${res}`;
+            });
+          })
+          .catch((err) => {
+            console.log("some error occur");
+          });
+      }
+
+      async function calculateSum2() {
+        let num1 = document.querySelector("#num1").value;
+        let num2 = document.querySelector("#num2").value;
+
+        const res = await fetch(
+          `http://127.0.0.1:3000/sum?a=${num1}&b=${num2}`
+        );
+        const ans = await res.text();
+        document.getElementById("result").innerHTML = ans;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- Debounced Version  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of two numbers</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputBox">
+        <label for="num1">Num1 : </label>
+        <input
+          oninput="debouncePopulateSum()"
+          type="text"
+          id="num1"
+          placeholder="Enter the first number"
+        />
+      </div>
+
+      <div class="inputBox">
+        <label for="num2">Num2 : </label>
+        <input
+          oninput="debouncePopulateSum()"
+          type="text"
+          id="num2"
+          placeholder="Enter the second number"
+        />
+      </div>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      let timeout;
+      function debouncePopulateSum() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          populateSum();
+        }, 1000);
+      }
+
+      function populateSum() {
+        let num1 = document.querySelector("#num1").value;
+        let num2 = document.querySelector("#num2").value;
+
+        let result = document.querySelector("#result");
+
+        // we need to send the value of num1 and num2 to server in order to calculate the sum.
+
+        fetch(`http://127.0.0.1:3000/sum?a=${num1}&b=${num2}`)
+          .then((data) => {
+            data.text().then((res) => {
+              console.log(res);
+              result.innerHTML = `sum is : ${res}`;
+            });
+          })
+          .catch((err) => {
+            console.log("some error occur");
+          });
+      }
+
+      async function calculateSum2() {
+        let num1 = document.querySelector("#num1").value;
+        let num2 = document.querySelector("#num2").value;
+
+        const res = await fetch(
+          `http://127.0.0.1:3000/sum?a=${num1}&b=${num2}`
+        );
+        const ans = await res.text();
+        document.getElementById("result").innerHTML = ans;
+      }
+    </script>
+  </body>
+</html>
