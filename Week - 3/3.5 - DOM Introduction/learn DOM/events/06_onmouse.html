@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onmouse</title>
+  </head>
+  <body>
+    <h1>JavaScript HTML Events</h1>
+    <h2>The onmouse Attribute</h2>
+
+    <div onmouseover="handleMouseOver(this)" onmouseout="handleMouseOut(this)">
+      Mouse over Me
+    </div>
+
+    <script>
+      function handleMouseOver(obj) {
+        obj.innerHTML = "Thank You!!";
+      }
+
+      function handleMouseOut(obj) {
+        obj.innerHTML = "Mouse over Me";
+      }
+    </script>
+  </body>
+</html>

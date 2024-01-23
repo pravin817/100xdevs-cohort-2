@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onmouse Up and Down</title>
+  </head>
+  <body>
+    <h1>JavaScript HTML Events</h1>
+    <h2>The onmouse Attribute</h2>
+
+    <div onmouseup="handleMouseUp(this)" onmousedown="handleMouseDown(this)">
+      Click Me
+    </div>
+
+    <script>
+      function handleMouseUp(obj) {
+        obj.innerHTML = "Thank You!!";
+      }
+
+      function handleMouseDown(obj) {
+        obj.innerHTML = "Click Me";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Sibling</title>
+  </head>
+  <body>
+    <div class="list">
+      <h1 class="title">Item</h1>
+      <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul>
+
+      <p>Hello World</p>
+    </div>
+
+    <script>
+      // get the ul parentNode
+      const ul = document.querySelector(".items");
+
+      console.log(ul.parentNode);
+
+      // Now change the css
+      ul.parentNode.style.backgroundColor = "red";
+
+      // Now access the siblings
+
+      //The title
+      console.log(ul.previousElementSibling);
+
+      // The hello world text
+      console.log(ul.nextElementSibling);
+    </script>
+  </body>
+</html>

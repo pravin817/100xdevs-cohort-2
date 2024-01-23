@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find the HTML Elements</title>
+  </head>
+  <body>
+    <!-- <div id="first">Div First</div>
+    <p>Paragraph one</p>
+    <div>Div Two</div>
+    <p>Paragraph Two</p>
+    <div>Yet another Div</div> -->
+
+    <!-- 3. By className -->
+    <!-- <p class="intro">Hello World</p>
+    <p class="intro">
+      This example demonstrate the <b> getElementsByClassName</b> methods
+    </p> -->
+
+    <!-- 4. By using CSS selectors  -->
+
+    <p class="intro">Paragraph one</p>
+    <p>paragraph two</p>
+    <p>paragraph three</p>
+    <p id="hello">paragraph four</p>
+
+    <!-- <p id="demo"></p> -->
+    <script>
+      // Find the HTML Elements
+      // 1. By Id
+      //   const firstDiv = document.getElementById("first");
+      //   console.log(firstDiv);
+
+      // 2. By using tagname
+      //   let div = document.getElementsByTagName("div");
+      //   console.log(div);
+
+      // 3. By using ClassName
+      //   const x = document.getElementsByClassName("intro");
+      //   document.getElementById("demo").innerHTML =
+      //     'The first paragraph (index) with class="intro" is : ' + x[1].innerHTML;
+
+      // 4. By using the CSS selectors
+      const p = document.querySelectorAll("p");   // It selects the all p tags but we can select the particular tag. 
+      console.log(p);
+
+      p.forEach((para) => (para.style.backgroundColor = "red"));
+    </script>
+  </body>
+</html>
