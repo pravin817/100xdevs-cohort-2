@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="handleClick()" id="btn">Counter 0</button>
+
+    <script>
+      function handleClick() {
+        const btn = document.querySelector("#btn");
+
+        // get the inner integer value
+        let val = parseInt(btn.innerHTML.split(" ")[1]);
+
+        // Update the value by 1
+        val = val + 1;
+
+        btn.innerHTML = `counter ${val}`;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- The second way -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Foundation</title>
+  </head>
+  <body>
+    <div class="buttonParent"></div>
+
+    <script>
+      let state = {
+        count: 0,
+      };
+
+      function onButtonPress() {
+        state.count++;
+        console.log(state)
+        buttonComponentReRender();
+      }
+
+      function buttonComponentReRender() {
+        //  select the parent div
+
+        const buttonParent = document.querySelector(".buttonParent");
+
+        // clear the innerText
+        buttonParent.innerHTML = "";
+        const element = buttonComponent(state.count);
+        buttonParent.appendChild(element);
+      }
+
+      function buttonComponent(count) {
+        const button = document.createElement("button");
+        button.innerHTML = `counter ${count}`;
+        button.setAttribute("onclick", "onButtonPress()");
+        console.log("ReRender");
+        return button;
+      }
+
+      buttonComponentReRender();
+    </script>
+  </body>
+</html>
